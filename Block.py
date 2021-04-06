@@ -2,6 +2,7 @@ from Persona import Persona
 from static import *
 import binascii as ba
 import json
+import re
 
 class Block:
     def __init__(self, contract_json, prior_signature,party_balance,party_nfts,block_number):
@@ -68,9 +69,27 @@ class Block:
             self.authority_signature,
         ]
 
+    def is_invalid_hash(self,address,tp="address"):
+        if tp == "data" and address == "":
+            return False
+        if len(address) != 64:
+            return True
+        if address != address.lower():
+            print("case error")
+            return True
+        if not bool(re.match(r"^[a-f0-9]{64}$",address)):
+            return True
+        return False
+
     def validate_contract(self):
         # Validation code here
         #print("validate")
+        if self.is_invalid_hash(self.payload["origin"]):
+            return False
+        if self.is_invalid_hash(self.payload["destination"]):
+            return False
+        if self.is_invalid_hash(self.payload["data"],"data"):
+            return False
         if self.payload["tokens"] != str(self.tokens):
             print("invalid token value")
             return False
@@ -120,7 +139,7 @@ if __name__ == '__main__':
     #print(c.get_signed_json())
     print(b)
     """
-    d = Contract(contract_type="Transfer NFT",data="aaa")
-    x = Block(d.get_signed_json(),'fake_sig',10,{'aaa','bbb'},1)
+    d = Contract(contract_type="Transfer NFT",data="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    x = Block(d.get_signed_json(),'fake_sig',10,{'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','bbb'},1)
     print(x)
 

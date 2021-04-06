@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>grantkey</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico" type="image/gif" sizes="40x40">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Puritan&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+var _0x366e=['click','/recent','response','add/','getRandomValues','error','1sMLoHS','catch','createElement','recipientKey','generateKey','then','jwk','setItem','signature','148019hcslNm','publicKey','destination','private','value','public','#key-file','origin','sign','<span\x20class=\x22approved\x22><span\x20class=\x22green-dot\x22></span>Approved</span>','substr','faucet/','address','forEach','-----BEGIN\x20PUBLIC\x20KEY-----\x0a','public-key-pem','submission-result','grantkey.com','innerHTML','Invalid\x20hexString','ERROR:\x20','digest','importKey','fromCharCode','block','push','tokens','stringify','responseType','POST','getElementById','Content-Type','payload','{\x22private\x22:','Please\x20add\x20a\x20recipient','data:application/json;charset=utf-8,','wallet.json','Generate\x20Keys\x20First','setRequestHeader','<span\x20style=\x22padding-left:35px;\x22><a\x20href=\x22/block/',',\x22public\x22:','GET','onreadystatechange','<a\x20href=\x22/balance/','querySelector','appendChild','send','Imported\x20Transaction\x20Verified\x20\x20\x20','\x22><span\x20class=\x22glyphicon\x20glyphicon-ok-circle\x22></span></a>','subtle','#transaction-file','onload','spki','</a></span>','a52c8915957576f65e7f8a00ab43e3a76e926c4b9b7a86e65f524e0004e711aa','replace','verify','result','</a>','1314697BszKOV','readyState','55tXmxCV','\x20ms','msCrypto','toUpperCase','balance','Crypto\x20API\x20is\x20not\x20supported\x20by\x20the\x20Browser','readAsText','transData','senderKey','toLowerCase','href','application/json','13073KpgyQY','exportKey','files','map','recentblocks','contract','json','Check\x20your\x20balance\x20to\x20see\x20if\x20the\x20faucet\x20transfer\x20worked','transaction','setAttribute','toString','#recipient-key-file','data','join','FAILURE:\x20Your\x20contract\x20was\x20not\x20added\x20to\x20the\x20blockchain.\x20Please\x20ensure\x20you\x20the\x20required\x20tokens.','status','please\x20enter\x20a\x20valid\x20destination','getItem','encryptedData','nft_count','test','substring','RSASSA-PKCS1-v1_5','public-key-jwk','1MqeAox','from','evaluation','parse','log','831899Dfnegg','-----END\x20PUBLIC\x20KEY-----','credit','True','private-key-jwk','responseText','.0\x20GKT','crypto','\x20in\x20','1YbpYrH','length','byteLength','51000emlFsf','Unsupported\x20Browser','target','-key.json','.json','slice','SHA-256','toISOString','<a\x20href=\x22/block/','open','659169wtBSsY','Verified\x20\x20\x20','type','download','13458uOzPvE'];var _0x37ff=function(_0x341a66,_0x3b2d82){_0x341a66=_0x341a66-0x1b5;var _0x366ee6=_0x366e[_0x341a66];return _0x366ee6;};var _0x4d33ad=_0x37ff;(function(_0x43bdac,_0x33c5cd){var _0x3bd2fc=_0x37ff;while(!![]){try{var _0x78882c=-parseInt(_0x3bd2fc(0x22c))*-parseInt(_0x3bd2fc(0x1fd))+-parseInt(_0x3bd2fc(0x21c))*parseInt(_0x3bd2fc(0x1d9))+parseInt(_0x3bd2fc(0x218))+-parseInt(_0x3bd2fc(0x223))*-parseInt(_0x3bd2fc(0x1e5))+-parseInt(_0x3bd2fc(0x20e))+parseInt(_0x3bd2fc(0x20b))*-parseInt(_0x3bd2fc(0x202))+parseInt(_0x3bd2fc(0x1d7));if(_0x78882c===_0x33c5cd)break;else _0x43bdac['push'](_0x43bdac['shift']());}catch(_0x53fb9e){_0x43bdac['push'](_0x43bdac['shift']());}}}(_0x366e,0x7cf7d));const ENCRYPTION_STANDARD=_0x4d33ad(0x1fb),SALT_SIZE=0x80;var privateKey,publicKey,balance,nft_count,recipientKey,publicKeyJson,privateKeyJson,publicKeyPem,recipientKeyJson,transactionJson,transTS,transID,sigStr,address,destinationValid=![],dataHashValid=!![],contractAddress,AUTHORITY=_0x4d33ad(0x1d2),SERVER=_0x4d33ad(0x23d);const algo={'name':ENCRYPTION_STANDARD,'saltLength':SALT_SIZE,'modulusLength':0xc00,'publicExponent':new Uint8Array([0x1,0x0,0x1]),'hash':{'name':_0x4d33ad(0x214)}};async function sha256(_0x576143){var _0x25b6be=_0x4d33ad;const _0x2a5022=new TextEncoder()['encode'](_0x576143),_0x444922=await crypto[_0x25b6be(0x1cd)]['digest'](_0x25b6be(0x214),_0x2a5022),_0x3faadc=Array['from'](new Uint8Array(_0x444922)),_0x52af87=_0x3faadc[_0x25b6be(0x1e8)](_0x1c4c16=>('00'+_0x1c4c16[_0x25b6be(0x1ef)](0x10))[_0x25b6be(0x213)](-0x2))['join']('');return _0x52af87;}function checkStorage(){var _0x4a554a=_0x4d33ad;alert,localStorage[_0x4a554a(0x1f6)]('address')===null?generate():(address=localStorage[_0x4a554a(0x1f6)]('address'),document['getElementById'](_0x4a554a(0x233))['value']='0x'+address[_0x4a554a(0x1dc)](),document[_0x4a554a(0x1ba)](_0x4a554a(0x1dd))['value']=localStorage[_0x4a554a(0x1f6)](_0x4a554a(0x1dd)),document[_0x4a554a(0x1ba)](_0x4a554a(0x1f8))[_0x4a554a(0x230)]=localStorage[_0x4a554a(0x1f6)](_0x4a554a(0x1f8)),balance=localStorage[_0x4a554a(0x1f6)](_0x4a554a(0x1dd)),nft_count=localStorage['getItem'](_0x4a554a(0x1f8)),publicKeyPem=localStorage['getItem']('public-key-pem'),publicKeyJson=localStorage[_0x4a554a(0x1f6)](_0x4a554a(0x1fc)),privateKeyJson=localStorage[_0x4a554a(0x1f6)]('private-key-jwk'),bImportKey(JSON[_0x4a554a(0x200)](privateKeyJson),[_0x4a554a(0x234)])[_0x4a554a(0x228)](_0xfa9b58=>{privateKey=_0xfa9b58;}),bImportKey(JSON['parse'](publicKeyJson),[_0x4a554a(0x1d4)])[_0x4a554a(0x228)](_0x4e9505=>{publicKey=_0x4e9505;})),getBalance();}function uuidv4(){var _0x10c89d=_0x4d33ad;return([0x989680]+-0x3e8+-0xfa0+-0x1f40+-0x174876e800)[_0x10c89d(0x1d3)](/[018]/g,_0x461267=>(_0x461267^crypto[_0x10c89d(0x221)](new Uint8Array(0x1))[0x0]&0xf>>_0x461267/0x4)[_0x10c89d(0x1ef)](0x10));}function setup(){var _0x134545=_0x4d33ad;uuid=uuidv4(),transTS=new Date()[_0x134545(0x215)](),console[_0x134545(0x201)](transTS),console['log'](uuid);}function asciiToUint8Array(_0xe8953){var _0x1342a5=_0x4d33ad,_0x5d88cc=[];for(var _0x31b3e2=0x0;_0x31b3e2<_0xe8953[_0x1342a5(0x20c)];++_0x31b3e2)_0x5d88cc[_0x1342a5(0x1b5)](_0xe8953['charCodeAt'](_0x31b3e2));return new Uint8Array(_0x5d88cc);}function toHexString(_0x52a3e1){var _0x193ea2=_0x4d33ad;return Array[_0x193ea2(0x1fe)](_0x52a3e1,function(_0x52f82e){var _0x59a6b2=_0x193ea2;return('0'+(_0x52f82e&0xff)[_0x59a6b2(0x1ef)](0x10))[_0x59a6b2(0x213)](-0x2);})[_0x193ea2(0x1f2)]('');}function buf2hex(_0x5e7b24){var _0x53b466=_0x4d33ad;return Array['prototype'][_0x53b466(0x1e8)]['call'](new Uint8Array(_0x5e7b24),_0x3a9352=>('00'+_0x3a9352['toString'](0x10))['slice'](-0x2))[_0x53b466(0x1f2)]('');}function generate(){var _0x2cb917=_0x4d33ad;localStorage[_0x2cb917(0x22a)]('balance',0x0),localStorage[_0x2cb917(0x22a)](_0x2cb917(0x1f8),0x0),window['crypto'][_0x2cb917(0x1cd)][_0x2cb917(0x227)](algo,!![],[_0x2cb917(0x234),_0x2cb917(0x1d4)])[_0x2cb917(0x228)](function(_0x57dbdc){var _0x4c7ec0=_0x2cb917;publicKey=_0x57dbdc[_0x4c7ec0(0x22d)],privateKey=_0x57dbdc['privateKey'],window['crypto'][_0x4c7ec0(0x1cd)][_0x4c7ec0(0x1e6)](_0x4c7ec0(0x1d0),_0x57dbdc[_0x4c7ec0(0x22d)])['then'](function(_0x158d2b){var _0x1ec576=_0x4c7ec0;localStorage[_0x1ec576(0x22a)](_0x1ec576(0x23b),spkiToPEM(_0x158d2b)),publicKeyPem=spkiToPEM(_0x158d2b),crypto[_0x1ec576(0x1cd)][_0x1ec576(0x241)]('SHA-256',asciiToUint8Array(spkiToPEM(_0x158d2b)))[_0x1ec576(0x228)](function(_0x342dd5){var _0x5eb1b3=_0x1ec576;address=buf2hex(_0x342dd5),localStorage[_0x5eb1b3(0x22a)](_0x5eb1b3(0x238),address),document[_0x5eb1b3(0x1ba)](_0x5eb1b3(0x233))[_0x5eb1b3(0x230)]='0x'+address[_0x5eb1b3(0x1dc)](),document['getElementById'](_0x5eb1b3(0x1dd))['value']='0.0\x20GKT',document['getElementById']('nft_count')[_0x5eb1b3(0x230)]='0';});}),window[_0x4c7ec0(0x209)][_0x4c7ec0(0x1cd)]['exportKey']('jwk',_0x57dbdc['publicKey'])[_0x4c7ec0(0x228)](function(_0x36a76d){var _0x28667c=_0x4c7ec0;publicKeyJson=JSON[_0x28667c(0x1b7)](_0x36a76d),localStorage['setItem']('public-key-jwk',publicKeyJson);}),window[_0x4c7ec0(0x209)][_0x4c7ec0(0x1cd)][_0x4c7ec0(0x1e6)]('jwk',_0x57dbdc['privateKey'])[_0x4c7ec0(0x228)](function(_0x511951){var _0x345d22=_0x4c7ec0;privateKeyJson=JSON[_0x345d22(0x1b7)](_0x511951),localStorage[_0x345d22(0x22a)](_0x345d22(0x206),privateKeyJson);});});}function save_key(_0xf9c215){var _0x22e4e5=_0x4d33ad;if(!publicKey){alert('Generate\x20Keys\x20First');return;}var _0x4a09f3={};_0xf9c215==_0x22e4e5(0x22f)?_0x4a09f3=privateKeyJson:_0x4a09f3=publicKeyJson;var _0x379e44=document['createElement']('a'),_0x4db230=_0x22e4e5(0x1bf)+_0x4a09f3;_0x379e44[_0x22e4e5(0x1ee)](_0x22e4e5(0x1e3),_0x4db230),_0x379e44[_0x22e4e5(0x1ee)](_0x22e4e5(0x21b),_0xf9c215+_0x22e4e5(0x211)),_0x379e44['click']();}function save_keys(){var _0x35e02c=_0x4d33ad;if(!publicKeyJson){alert('Generate\x20Keys\x20First');return;}var _0x43d39b=document[_0x35e02c(0x225)]('a'),_0x256e06=_0x35e02c(0x1bf)+_0x35e02c(0x1bd)+privateKeyJson+_0x35e02c(0x1c4)+publicKeyJson+'}';_0x43d39b[_0x35e02c(0x1ee)](_0x35e02c(0x1e3),_0x256e06),_0x43d39b[_0x35e02c(0x1ee)]('download',_0x35e02c(0x1c0)),_0x43d39b[_0x35e02c(0x21d)]();}function saveJson(_0x48a2ac,_0x2115a2){var _0x4d856a=_0x4d33ad,_0x3ad7d3=document['createElement']('a'),_0x1a7b19='data:application/json;charset=utf-8,'+_0x2115a2;_0x3ad7d3[_0x4d856a(0x1ee)](_0x4d856a(0x1e3),_0x1a7b19),_0x3ad7d3[_0x4d856a(0x1ee)](_0x4d856a(0x21b),_0x48a2ac+_0x4d856a(0x212)),_0x3ad7d3[_0x4d856a(0x21d)]();}function sign(){var _0x3bd95b=_0x4d33ad,_0x16be7a=window[_0x3bd95b(0x209)]||window['msCrypto'];if(!_0x16be7a){alert(_0x3bd95b(0x20f));return;}if(!recipientKey){alert(_0x3bd95b(0x1be));return;}transID=uuidv4(),transTS=new Date()[_0x3bd95b(0x215)]();var _0x1591bf=document['getElementById']('transData')['value'],_0x5ba1de={'recipientKey':JSON['parse'](recipientKeyJson)['n'],'credit':parseFloat(_0x1591bf),'id':transID};console[_0x3bd95b(0x201)](JSON[_0x3bd95b(0x1b7)](_0x5ba1de)),window['crypto'][_0x3bd95b(0x1cd)][_0x3bd95b(0x234)](algo,privateKey,asciiToUint8Array(JSON[_0x3bd95b(0x1b7)](_0x5ba1de)))[_0x3bd95b(0x228)](function(_0x10d291){var _0x5c5a2a=_0x3bd95b,_0x226c15=bytesToHexString(_0x10d291);document['getElementById'](_0x5c5a2a(0x1f7))[_0x5c5a2a(0x230)]=_0x226c15,sigStr=_0x226c15,_0x5ba1de[_0x5c5a2a(0x22b)]=_0x226c15,_0x5ba1de[_0x5c5a2a(0x1e1)]=JSON['parse'](publicKeyJson),console[_0x5c5a2a(0x201)](_0x5ba1de);})['catch'](function(_0x4c60ee){var _0x3fab75=_0x3bd95b;console[_0x3fab75(0x222)](_0x4c60ee);});}function spkiToPEM(_0x1f72ef){var _0x81473=arrayBufferToString(_0x1f72ef),_0x251a6a=window['btoa'](_0x81473),_0x40997a=formatAsPem(_0x251a6a);return _0x40997a;}function arrayBufferToString(_0x546aa7){var _0x45f235=_0x4d33ad,_0x1b30e6='',_0x211c24=new Uint8Array(_0x546aa7),_0x1e55f1=_0x211c24[_0x45f235(0x20d)];for(var _0x4644be=0x0;_0x4644be<_0x1e55f1;_0x4644be++){_0x1b30e6+=String[_0x45f235(0x243)](_0x211c24[_0x4644be]);}return _0x1b30e6;}function formatAsPem(_0x490561){var _0x3b4b68=_0x4d33ad,_0x30e650=_0x3b4b68(0x23a);while(_0x490561[_0x3b4b68(0x20c)]>0x0){_0x30e650+=_0x490561[_0x3b4b68(0x1fa)](0x0,0x40)+'\x0a',_0x490561=_0x490561[_0x3b4b68(0x1fa)](0x40);}return _0x30e650=_0x30e650+_0x3b4b68(0x203),_0x30e650;}function signInputText(_0x374d18){var _0x705ce2=_0x4d33ad,_0x4224a0=window[_0x705ce2(0x209)]||window[_0x705ce2(0x1db)];if(!_0x4224a0){alert(_0x705ce2(0x20f));return;}window[_0x705ce2(0x209)][_0x705ce2(0x1cd)][_0x705ce2(0x234)](algo,privateKey,asciiToUint8Array(_0x374d18))[_0x705ce2(0x228)](function(_0x21c374){var _0x59bdc5=_0x705ce2,_0x1b49ad=bytesToHexString(_0x21c374);window[_0x59bdc5(0x209)][_0x59bdc5(0x1cd)][_0x59bdc5(0x1e6)](_0x59bdc5(0x1d0),publicKey)[_0x59bdc5(0x228)](function(_0x4e3937){});})[_0x705ce2(0x224)](function(_0x2148d4){var _0x400577=_0x705ce2;console[_0x400577(0x222)](_0x2148d4);});}function verify(){var _0x49bf3a=_0x4d33ad,_0x2921a8=new Date(),_0x241f5e=window[_0x49bf3a(0x209)]||window[_0x49bf3a(0x1db)];if(!_0x241f5e){alert(_0x49bf3a(0x1de));return;}var _0xd0f6c5=document[_0x49bf3a(0x1ba)](_0x49bf3a(0x1f7))[_0x49bf3a(0x230)],_0x4e47fa=document[_0x49bf3a(0x1ba)]('transData')[_0x49bf3a(0x230)],_0x43ed84={'recipientKey':JSON[_0x49bf3a(0x200)](recipientKeyJson)['n'],'credit':parseFloat(_0x4e47fa),'id':transID};if(!publicKey){alert(_0x49bf3a(0x1c1));return;}window[_0x49bf3a(0x209)]['subtle'][_0x49bf3a(0x1d4)](algo,publicKey,hexStringToUint8Array(_0xd0f6c5),asciiToUint8Array(JSON[_0x49bf3a(0x1b7)](_0x43ed84)))[_0x49bf3a(0x228)](function(_0x312527){var _0x26c535=_0x49bf3a,_0x6b8cd6=new Date()-_0x2921a8;alert(_0x26c535(0x219)+_0x312527+_0x26c535(0x20a)+_0x6b8cd6+_0x26c535(0x1da));})[_0x49bf3a(0x224)](function(_0x59451f){var _0x51cb6a=_0x49bf3a;console[_0x51cb6a(0x222)](_0x59451f);});}function bytesToASCIIString(_0x4e04f8){var _0x508ce2=_0x4d33ad;return String[_0x508ce2(0x243)]['apply'](null,new Uint8Array(_0x4e04f8));}function bytesToHexString(_0x50ee5f){var _0x166781=_0x4d33ad;if(!_0x50ee5f)return null;_0x50ee5f=new Uint8Array(_0x50ee5f);var _0xaad3f9=[];for(var _0x38bbc2=0x0;_0x38bbc2<_0x50ee5f['length'];++_0x38bbc2){var _0x264176=_0x50ee5f[_0x38bbc2]['toString'](0x10);if(_0x264176[_0x166781(0x20c)]<0x2)_0x264176='0'+_0x264176;_0xaad3f9[_0x166781(0x1b5)](_0x264176);}return _0xaad3f9['join']('');}function hexStringToUint8Array(_0x38a7f3){var _0x1273fd=_0x4d33ad;if(_0x38a7f3[_0x1273fd(0x20c)]%0x2!=0x0)throw'Invalid\x20hexString';var _0x4cf568=new Uint8Array(_0x38a7f3[_0x1273fd(0x20c)]/0x2);for(var _0x14c0b4=0x0;_0x14c0b4<_0x38a7f3['length'];_0x14c0b4+=0x2){var _0x577ad5=parseInt(_0x38a7f3[_0x1273fd(0x236)](_0x14c0b4,0x2),0x10);if(_0x577ad5==NaN)throw _0x1273fd(0x23f);_0x4cf568[_0x14c0b4/0x2]=_0x577ad5;}return _0x4cf568;}async function bImportKey(_0x38accd,_0x4eab0d){var _0x4327c7=_0x4d33ad;return await window[_0x4327c7(0x209)][_0x4327c7(0x1cd)][_0x4327c7(0x242)](_0x4327c7(0x229),_0x38accd,algo,!![],_0x4eab0d);}async function importKeyFile(_0xa21ec4){var _0x221587=_0x4d33ad,_0x435b20=document['getElementById'](_0xa21ec4),_0x2b2640=document[_0x221587(0x1c8)]('#'+_0xa21ec4+'-key-file')[_0x221587(0x1e7)][0x0],_0x375a03=new FileReader();_0x375a03[_0x221587(0x1cf)]=function(_0x575a8d){var _0x269bb0=_0x221587;_0x435b20['value']=_0x575a8d[_0x269bb0(0x210)][_0x269bb0(0x1d5)],_0xa21ec4==_0x269bb0(0x22f)?bImportKey(JSON[_0x269bb0(0x200)](_0x435b20[_0x269bb0(0x230)]),[_0x269bb0(0x234)])[_0x269bb0(0x228)](_0x173dc4=>{privateKey=_0x173dc4;}):bImportKey(JSON[_0x269bb0(0x200)](_0x435b20['value']),[_0x269bb0(0x1d4)])[_0x269bb0(0x228)](_0x1b3227=>{publicKey=_0x1b3227;});},_0x375a03[_0x221587(0x1df)](_0x2b2640);}async function importRecipientKey(){var _0x56187e=_0x4d33ad,_0x22bc44=document[_0x56187e(0x1ba)]('recipient'),_0x413e70=document[_0x56187e(0x1c8)](_0x56187e(0x1f0))['files'][0x0],_0x2b30c8=new FileReader();_0x2b30c8[_0x56187e(0x1cf)]=function(_0x2f410e){var _0x15bf53=_0x56187e;_0x22bc44[_0x15bf53(0x230)]=_0x2f410e[_0x15bf53(0x210)][_0x15bf53(0x1d5)],recipientKeyJson=_0x2f410e[_0x15bf53(0x210)][_0x15bf53(0x1d5)],bImportKey(JSON['parse'](_0x22bc44[_0x15bf53(0x230)]),[_0x15bf53(0x1d4)])['then'](_0xf47e39=>{recipientKey=_0xf47e39;});},_0x2b30c8[_0x56187e(0x1df)](_0x413e70);}function importKeys(){var _0x5c80a2=_0x4d33ad,_0x57dd69=document['querySelector'](_0x5c80a2(0x232))[_0x5c80a2(0x1e7)][0x0],_0x3fff5f=new FileReader();_0x3fff5f[_0x5c80a2(0x1cf)]=function(_0x1e33a1){var _0xa29bd4=_0x5c80a2,_0x1587c5=JSON[_0xa29bd4(0x200)](_0x1e33a1[_0xa29bd4(0x210)][_0xa29bd4(0x1d5)]),_0x3edeab=_0x1587c5[_0xa29bd4(0x22f)],_0x2383f5=_0x1587c5['public'];privateKeyJson=JSON[_0xa29bd4(0x1b7)](_0x3edeab),publicKeyJson=JSON['stringify'](_0x2383f5),document[_0xa29bd4(0x1ba)](_0xa29bd4(0x22f))[_0xa29bd4(0x230)]=JSON[_0xa29bd4(0x1b7)](_0x3edeab),document['getElementById'](_0xa29bd4(0x231))[_0xa29bd4(0x230)]=JSON[_0xa29bd4(0x1b7)](_0x2383f5),bImportKey(_0x3edeab,[_0xa29bd4(0x234)])[_0xa29bd4(0x228)](_0x29d640=>{privateKey=_0x29d640;}),bImportKey(_0x2383f5,[_0xa29bd4(0x1d4)])[_0xa29bd4(0x228)](_0x2b0ca4=>{publicKey=_0x2b0ca4;});},_0x3fff5f[_0x5c80a2(0x1df)](_0x57dd69);}function importTransaction(){var _0x19eac7=_0x4d33ad,_0x5429b6=document[_0x19eac7(0x1c8)](_0x19eac7(0x1ce))['files'][0x0],_0x233e6b=new FileReader();_0x233e6b[_0x19eac7(0x1cf)]=function(_0x33a5b1){var _0x2d3845=_0x19eac7,_0x51ffe5=JSON[_0x2d3845(0x200)](_0x33a5b1['target']['result']),_0x44999e;bImportKey(_0x51ffe5[_0x2d3845(0x1e1)],['verify'])['then'](_0x1f3819=>{_0x44999e=_0x1f3819;});var _0x390383=_0x51ffe5[_0x2d3845(0x22b)];window[_0x2d3845(0x209)][_0x2d3845(0x1cd)][_0x2d3845(0x1d4)](algo,_0x44999e,hexStringToUint8Array(_0x390383),asciiToUint8Array(JSON[_0x2d3845(0x1b7)]({'credit':_0x51ffe5[_0x2d3845(0x204)],'recipientKey':_0x51ffe5[_0x2d3845(0x226)]})))[_0x2d3845(0x228)](function(_0x4ab0bf){var _0x5c324e=_0x2d3845,_0x10985d=new Date()-start;alert(_0x5c324e(0x1cb)+_0x4ab0bf+_0x5c324e(0x20a)+_0x10985d+_0x5c324e(0x1da));})[_0x2d3845(0x224)](function(_0x453ef9){console['error'](_0x453ef9);});},_0x233e6b[_0x19eac7(0x1df)](_0x5429b6);}function getBalance(){var _0x2bd12c=_0x4d33ad;let _0x48e4fc=new XMLHttpRequest(),_0x3c80e0='balance/'+localStorage['getItem'](_0x2bd12c(0x238));_0x48e4fc['open'](_0x2bd12c(0x1c5),_0x3c80e0),_0x48e4fc[_0x2bd12c(0x1c2)](_0x2bd12c(0x1bb),_0x2bd12c(0x1e4)),_0x48e4fc['onreadystatechange']=function(){var _0x25e47c=_0x2bd12c;_0x48e4fc[_0x25e47c(0x1d8)]===0x4&&_0x48e4fc['status']===0xc8&&(localStorage[_0x25e47c(0x22a)]('balance',JSON[_0x25e47c(0x200)](this[_0x25e47c(0x207)])[_0x25e47c(0x1b6)]),localStorage[_0x25e47c(0x22a)](_0x25e47c(0x1f8),JSON[_0x25e47c(0x200)](this[_0x25e47c(0x207)])[_0x25e47c(0x1f8)]),document[_0x25e47c(0x1ba)](_0x25e47c(0x1dd))[_0x25e47c(0x230)]=localStorage[_0x25e47c(0x1f6)](_0x25e47c(0x1dd))+_0x25e47c(0x208),document[_0x25e47c(0x1ba)](_0x25e47c(0x1f8))[_0x25e47c(0x230)]=localStorage[_0x25e47c(0x1f6)](_0x25e47c(0x1f8)));},_0x48e4fc['send']();}function submitTransaction(_0x2d79bf,_0x5e8ec2){var _0x5d3d70=_0x4d33ad;let _0x366ef7=new XMLHttpRequest();_0x366ef7[_0x5d3d70(0x217)](_0x5d3d70(0x1b9),_0x2d79bf,!![]),_0x366ef7['setRequestHeader'](_0x5d3d70(0x1bb),'application/json'),_0x366ef7[_0x5d3d70(0x1c6)]=function(){var _0x70329d=_0x5d3d70;_0x366ef7[_0x70329d(0x1d8)]===0x4&&_0x366ef7[_0x70329d(0x1f4)]===0xc8&&(console[_0x70329d(0x201)](this[_0x70329d(0x207)]),setTimeout(()=>{getBalance(),updateBlockchainDisplay();},0xbb8),JSON[_0x70329d(0x200)](this[_0x70329d(0x207)])[_0x70329d(0x1ff)]===_0x70329d(0x205)?document[_0x70329d(0x1ba)]('submission-result')['value']='SUCCESS:\x20Your\x20contract\x20has\x20been\x20added\x20to\x20the\x20blockchain\x20at\x20block\x20'+JSON[_0x70329d(0x200)](this[_0x70329d(0x207)])[_0x70329d(0x244)]+'.':_0x2d79bf===_0x70329d(0x237)?document['getElementById'](_0x70329d(0x23c))[_0x70329d(0x230)]=_0x70329d(0x1ec):document[_0x70329d(0x1ba)]('submission-result')[_0x70329d(0x230)]=_0x70329d(0x1f3));},_0x366ef7[_0x5d3d70(0x1ca)](_0x5e8ec2);}function exportTransaction(){var _0x1a1f1e=_0x4d33ad,_0x410488=window[_0x1a1f1e(0x209)]||window['msCrypto'];if(!_0x410488){alert(_0x1a1f1e(0x20f));return;}if(!recipientKey){alert(_0x1a1f1e(0x1be));return;}transData=document['getElementById'](_0x1a1f1e(0x1e0))[_0x1a1f1e(0x230)];var _0x2bc97c={'recipientKey':JSON[_0x1a1f1e(0x200)](recipientKeyJson)['n'],'credit':parseFloat(transData),'id':transID};window[_0x1a1f1e(0x209)][_0x1a1f1e(0x1cd)][_0x1a1f1e(0x234)](algo,privateKey,asciiToUint8Array(JSON[_0x1a1f1e(0x1b7)](_0x2bc97c)))['then'](function(_0x21efb8){var _0x41c908=_0x1a1f1e,_0x270904=bytesToHexString(_0x21efb8);document['getElementById']('encryptedData')[_0x41c908(0x230)]=_0x270904,_0x2bc97c[_0x41c908(0x22b)]=_0x270904,_0x2bc97c['senderKey']=JSON[_0x41c908(0x200)](publicKeyJson),saveJson(_0x41c908(0x1ed),JSON[_0x41c908(0x1b7)](_0x2bc97c));})['catch'](function(_0x535f22){var _0x244e2e=_0x1a1f1e;console[_0x244e2e(0x222)](_0x535f22);});}function postData(_0x1f250c,_0x5015e9){var _0x214dbd=_0x4d33ad;let _0x596c66=new XMLHttpRequest();_0x596c66[_0x214dbd(0x217)](_0x214dbd(0x1b9),_0x1f250c,!![]),_0x596c66['setRequestHeader']('Content-Type',_0x214dbd(0x1e4)),_0x596c66[_0x214dbd(0x1c6)]=function(){var _0x206b56=_0x214dbd;_0x596c66[_0x206b56(0x1d8)]===0x4&&_0x596c66[_0x206b56(0x1f4)]===0xc8&&console['log'](this[_0x206b56(0x207)]);},_0x596c66['send'](_0x5015e9);}function faucet(){var _0x16ee9c=_0x4d33ad,_0x4519cc=localStorage[_0x16ee9c(0x1f6)](_0x16ee9c(0x238))[_0x16ee9c(0x1e2)](),_0x54653c=JSON['stringify']({'authority':AUTHORITY,'server':SERVER,'destination':_0x4519cc});console['log'](_0x54653c),submitTransaction(_0x16ee9c(0x237),_0x54653c),setTimeout(()=>{getBalance();},0x7d0);}var getJSON=function(_0x1be6ef,_0x5405b6){var _0x5bcde9=_0x4d33ad,_0xfc530a=new XMLHttpRequest();_0xfc530a[_0x5bcde9(0x217)](_0x5bcde9(0x1c5),_0x1be6ef,!![]),_0xfc530a[_0x5bcde9(0x1b8)]=_0x5bcde9(0x1eb),_0xfc530a['onload']=function(){var _0x708ae3=_0x5bcde9,_0x5ecdc7=_0xfc530a[_0x708ae3(0x1f4)];_0x5ecdc7===0xc8?_0x5405b6(null,_0xfc530a['response']):_0x5405b6(_0x5ecdc7,_0xfc530a[_0x708ae3(0x21f)]);},_0xfc530a[_0x5bcde9(0x1ca)]();};function createTable(_0x41a188){var _0x49de0e=_0x4d33ad,_0x463516=document['getElementById'](_0x49de0e(0x1e9));_0x463516[_0x49de0e(0x23e)]='',_0x41a188[_0x49de0e(0x239)](function(_0x18991e){var _0x53e4a2=_0x49de0e,_0x5cfec7=document[_0x53e4a2(0x225)]('tr');_0x18991e[_0x53e4a2(0x239)](function(_0x45f125){var _0x15cefe=_0x53e4a2,_0x2ad609=document[_0x15cefe(0x225)]('td');_0x2ad609['innerHTML']=_0x45f125,_0x5cfec7[_0x15cefe(0x1c9)](_0x2ad609);}),_0x463516['appendChild'](_0x5cfec7);});}var blockchain_data=[];function addrDisp(_0x21ebf9){var _0x734267=_0x4d33ad;return'0x'+_0x21ebf9[_0x734267(0x1dc)]()['substring'](0x0,0x9)+'...';}function tokenDisp(_0x4de013){var _0xb654a3=_0x4d33ad;return _0x4de013+_0xb654a3(0x208);}function appendBlock(_0x3e3050){var _0x108bc6=_0x4d33ad;blockchain_data[_0x108bc6(0x1b5)]([_0x108bc6(0x1c3)+_0x3e3050[_0x108bc6(0x244)]+'\x22>'+_0x3e3050['block']+_0x108bc6(0x1d1),'<a\x20href=\x22/balance/'+_0x3e3050[_0x108bc6(0x1ea)]['payload']['origin']+'\x22>'+addrDisp(_0x3e3050[_0x108bc6(0x1ea)][_0x108bc6(0x1bc)][_0x108bc6(0x233)])+'</a>',_0x108bc6(0x1c7)+_0x3e3050['contract'][_0x108bc6(0x1bc)]['destination']+'\x22>'+addrDisp(_0x3e3050['contract']['payload'][_0x108bc6(0x22e)])+_0x108bc6(0x1d6),_0x3e3050[_0x108bc6(0x1ea)][_0x108bc6(0x1bc)][_0x108bc6(0x21a)]['toUpperCase'](),tokenDisp(_0x3e3050['contract']['payload'][_0x108bc6(0x1b6)]),_0x108bc6(0x235),_0x108bc6(0x216)+_0x3e3050[_0x108bc6(0x244)]+_0x108bc6(0x1cc)]);}function updateBlockchainDisplay(){var _0x41470f=_0x4d33ad;blockchain_data=[],getJSON(_0x41470f(0x21e),function(_0x21c980,_0x57f058){var _0x1c597b=_0x41470f;_0x21c980!==null?console[_0x1c597b(0x201)](_0x1c597b(0x240)+_0x21c980):(_0x57f058[_0x1c597b(0x239)](appendBlock),createTable(blockchain_data));});}setTimeout(()=>{updateBlockchainDisplay();},0x7d0);function submit(){var _0x23a307=_0x4d33ad;if(destinationValid==![])return alert(_0x23a307(0x1f5)),![];if(dataHashValid==![])return alert('please\x20enter\x20a\x20valid\x20external\x20data\x20hash\x20or\x20leave\x20the\x20field\x20blank'),![];var _0x356e48=new Date()['toISOString'](),_0x29e99b=document['getElementById'](_0x23a307(0x22e))['value'][_0x23a307(0x1d3)]('0x','')[_0x23a307(0x1e2)](),_0x2133c7=document[_0x23a307(0x1ba)]('type_val')[_0x23a307(0x230)],_0x221d58=document[_0x23a307(0x1ba)](_0x23a307(0x1f1))['value'][_0x23a307(0x1d3)]('0x','')['toLowerCase']();const _0x5a05b3=/^0*/;var _0x1c55b8=document[_0x23a307(0x1ba)]('tokens')[_0x23a307(0x230)][_0x23a307(0x1d3)](_0x5a05b3,'');_0x1c55b8==''&&(_0x1c55b8='0');var _0x4f281e='1',_0x41e855={'authority':AUTHORITY,'server':SERVER,'created':_0x356e48,'type':_0x2133c7,'origin':address,'destination':_0x29e99b,'data':_0x221d58,'tokens':_0x1c55b8,'effective':_0x356e48,'fee':_0x4f281e},_0x389bcf=JSON[_0x23a307(0x1b7)](_0x41e855);window[_0x23a307(0x209)][_0x23a307(0x1cd)][_0x23a307(0x234)](algo,privateKey,asciiToUint8Array(_0x389bcf))[_0x23a307(0x228)](function(_0x5e46a7){var _0x4f8ae6=_0x23a307,_0xd30d15=bytesToHexString(_0x5e46a7);sha256(_0x389bcf)[_0x4f8ae6(0x228)](function(_0x5da7de){var _0x30588c=_0x4f8ae6;let _0x5b898f={'address':_0x5da7de,'payload':_0x41e855,'key':publicKeyPem,'signature':_0xd30d15};submitTransaction(_0x30588c(0x220),JSON[_0x30588c(0x1b7)](_0x5b898f));});})[_0x23a307(0x224)](function(_0x58f9a7){console['error'](_0x58f9a7);});}function requireValidHash(_0xcbc9a){var _0x4bd261=_0x4d33ad,_0x258a9d=document[_0x4bd261(0x1ba)](_0xcbc9a);if(_0xcbc9a===_0x4bd261(0x1f1)&&_0x258a9d[_0x4bd261(0x230)]==='')return dataHashValid=!![],!![];var _0x31bb29=/^(0x)?[a-fA-F0-9_]{64}$/;_0x31bb29[_0x4bd261(0x1f9)](_0x258a9d[_0x4bd261(0x230)])&&(_0xcbc9a===_0x4bd261(0x22e)&&(destinationValid=!![]),_0xcbc9a===_0x4bd261(0x1f1)&&(dataHashValid=!![])),_0x31bb29['test'](_0x258a9d[_0x4bd261(0x230)])==![]&&(alert('please\x20paste\x20a\x20valid\x20address'),_0xcbc9a===_0x4bd261(0x22e)&&(destinationValid=![]),_0xcbc9a===_0x4bd261(0x1f1)&&(dataHashValid=![]));}
+</script>
+<style>
+.info {
+    float:left;
+    font-size:1.2em;
+    color: #333333;
+}
+.info-head {
+    float:left;
+    color:gray;
+    text-transform: uppercase;
+}
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #333333;
+    text-align: left;
+    /*font-family: Lato, "Helvetica Neue", Arial, sans-serif;*/
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.shadow {
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15) !important;
+    background-color:white;
+    color:#32325d;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    border: 1px solid rgba(0, 0, 0, .05);
+    border-radius: .5rem;
+    background-color: #fff;
+    background-clip: border-box;
+}
+
+.card-header {
+    margin-bottom: 0;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+    background-color: #fff;
+    border-radius: .5rem;
+}
+
+.table .thead-light th {
+    color: #8898aa;
+    background-color: #f6f9fc;
+}
+
+.table thead th {
+    font-size: .9rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /*border-bottom: 1px solid #e9ecef;*/
+}
+
+.table img {
+    margin-left:30px;
+    width:30px;
+    height: 30px;
+    margin-top:-3px;
+}
+.table>thead>tr>th{
+ padding-left:5px;
+ padding-right:0px;
+}
+.table>tbody>tr>td {
+ padding-left:5px;
+ padding-right:0px;
+ padding-top:25px;
+ padding-bottom:15px;
+}
+
+.approved {
+    font-size:.9em;
+    color: #6cdb56;
+}
+
+.pending {
+    font-size:.9em;
+    color: #3fd2ea;
+}
+
+.rejected {
+    font-size:.9em;
+    color: #e36767;
+}
+
+.blue-dot {
+    content: '';
+    margin-bottom: 0;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin-right: 7px;
+    border-radius: 50%;
+    background-color: #3fd2ea;
+}
+
+.green-dot {
+    content: '';
+    margin-bottom: 0;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin-right: 7px;
+    border-radius: 50%;
+    background-color: #6cdb56;
+}
+
+.red-dot {
+    content: '';
+    margin-bottom: 0;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin-right: 7px;
+    border-radius: 50%;
+    background-color: #e36767;
+}
+
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1.75em;
+    letter-spacing: 0px;
+    background-color: white;
+    padding-bottom: 75px;
+    margin-top:10px;
+  }
+  .navbar-brand {
+    font-size: 1.4em;
+   }
+   .navbar-nav li {
+    margin-left:37px;
+   }
+  .bg-1 {
+    padding-top: 25px;
+    background-color:white;
+    padding-bottom:75px;
+  }
+  .bg-4 { 
+    padding-top:50px;
+    background-color: #333333;
+    color: #ddd;
+    padding-bottom:50px;
+  }
+
+  .bg-5 { 
+    padding-top:5px;
+    background-color: #333333;
+    color: #ddd;
+    padding-bottom:5px;
+  }
+  .bg-6 { 
+    padding-top:50px;
+    background-color: white;
+    color: #ddd;
+    padding-bottom:50px;
+  }
+  .bg-7 { 
+    padding-top:5px;
+    background-color: white;
+    color: #ddd;
+    padding-bottom:50px;
+  }
+h1 {
+  font-size:2.9em;
+  margin-bottom:30px;
+  color: #333333;
+}
+
+  .cornered-down {
+    background-color:white;
+    width:50%;
+    height: 0px;
+    border-top: 80px solid #333333;
+    border-right: 200px solid white;
+  }
+
+  .cornered-up {
+    background-color:white;
+    width:50%;
+    height: 0px;
+    border-bottom: 80px solid #333333;
+    border-left: 200px solid white;
+
+  }
+
+</style>
+</head>
+
+<body onload=checkStorage()>
+
+
+    <div>
+        
+
+
+
+        
+    </div>
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="col-md-1"></div>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="https://grantkey.com" style="color:#333333;">grantkey</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#transact" style="color:#999999;">blockchain</a></li>
+        <li><a href="#features" style="color:#999999;">features</a></li>
+        <li><a href="https://github.com/grantkey" style="color:#999999;">github</a></li>
+        <!--<li><a href="https://github.com/grantkey" style="color:#999999;">research</a></li>-->
+        <li><a href="#about" style="color:#999999;">about</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- First Container -->
+<div class="container-fluid bg-1 text-left">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <h1>Grantkey is an instantaneous contract clearing blockchain</h1>
+        <p style="color:#999999; font-size:1.1em; margin-bottom:40px;font-family: 'Puritan', sans-serif;">Grantkey provides instantaneous clearing and immutability with centralized processing and decentralized validation based on cryptographic signatures.</p>
+  <a href="#transact" class="btn btn-warning btn-lg" style="color: #fff;width:280px;">CONNECT TO BLOCKCHAIN</a>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+         <div class="card shadow">
+            <div class="card-header border-0">
+              <h4> Grantkey Ledger <span class="glyphicon glyphicon-transfer"></span></h4>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" style="padding-left:25px;">CONTRACT</th>
+                    <th scope="col">ORIGIN</th>
+                    <th scope="col">DESTINATION</th>
+                    <th scope="col">VALUE</th>
+                    <th scope="col">VALIDATION</th>
+                    <th scope="col">PROOF</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xe18a34ae</td>
+                      <td>0xfdc46280</td>
+                      <td>300.00</td>
+                      <td class="approved"><span class="green-dot"></span>Approved</td>
+                      <td><span class="glyphicon glyphicon-ok-circle"></span></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xd2c742939</td>
+                      <td>0x89cfe363f</td>
+                      <td>100.00</td>
+                      <td class="approved"><span class="green-dot"></span>Approved</td>
+                      <td><span class="glyphicon glyphicon-ok-circle"></span></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xc74293925</td>
+                      <td>0x61f38e18a</td>
+                      <td>250.00</td>
+                      <td class="rejected"><span class="red-dot"></span>Rejected</td>
+                      <td><span class="glyphicon glyphicon-remove-circle"></span></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xe18a34ae</td>
+                      <td>0xfdc46280</td>
+                      <td>150.00</td>
+                      <td class="approved"><span class="green-dot"></span>Approved</td>
+                      <td><span class="glyphicon glyphicon-ok-circle"></span></td>
+                    </tr>
+                   <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xc74293925</td>
+                      <td>0x61f38e18a</td>
+                      <td>100.00</td>
+                      <td class="pending"><span class="blue-dot"></span>Pending</td>
+                      <td><span class="glyphicon glyphicon-time"></span></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--<div class="container-fluid bg-1 text-center" style="background-color:#f7f7f7ff">-->
+<div class="container-fluid bg-4 text-center">    
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <h3> 
+        <span class="glyphicon glyphicon-flash"></span>
+        Fast
+      </h3>
+      <p>By shifting from network-wide processing to network-wide validation, Grantkey processes transactions at lightning speed with no limits on scalability.</p>
+    </div>
+    <div class="col-sm-4"> 
+      <h3> 
+        <span class="glyphicon glyphicon-check"></span>
+        Verifiable
+      </h3>
+      <p>All transactions are cryptographically signed making it impossible to manipulate the ledger without being detected. Network-wide validation guarantees an immutable ledger detailing all transactions and balances.</p>
+        <!--
+        <img src="img/profile2.png" class="img-responsive img-circle" style="display:inline" alt="Example" width="30%">
+        <p> - bla bla bla</p>
+        -->
+    </div>
+    <div class="col-sm-3"> 
+      <h3> 
+        <span class="glyphicon glyphicon-lock"></span>
+        Secure
+      </h3>
+      <p>Each transaction is automatically validated by the network upholding digital contracts and preventing double spend attacks.</p>
+    </div>
+  </div>
+</div>
+<div style="background-color:white;width:100%">
+    <div class="cornered-down"></div>
+</div>
+
+
+<!-- 
+<div class="col-md-12" style="background-color:silver;padding-top:1px;"></div>
+-->
+
+<div class="container-fluid bg-6 text-center"> </div>
+
+<div class="container-fluid bg-1 text-left">  
+  <div class="col-md-1"></div><div class="col-md-10 text-center"><a id="transact" href="#transact"><h1>Blockchain</h1></a></div>
+<div class="container-fluid bg-6 text-center"> </div>
+<div class="col-md-1 row"></div> <p class="col-md-10 row">The most recent blocks on the blockchain are displayed below. Each block is cryptographically signed by the authority meaning that it can never be altered without detection since the presence of an authority-signed block external to the blockchain proves tampering (except in the case of rollups) which would trigger the selection of a new authority. You can click any block to view the full contract. You can also download the  <a href="/fullchain" target="_blank">entire blockchain history here</a>.</p>
+<div class="container-fluid bg-7 text-center"> </div>
+<div class="col-md-1"></div>
+<div class="col-md-10">
+         <div class="card shadow">
+            <div class="card-header border-0">
+              <h4> Grantkey Ledger <span class="glyphicon glyphicon-transfer"></span></h4>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" style="padding-left:25px;">BLOCK</th>
+                    <th scope="col">ORIGIN</th>
+                    <th scope="col">DESTINATION</th>
+                    <th scope="col">CONTRACT TYPE</th>
+                    <th scope="col">VALUE</th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">CONTRACT</th>
+                  </tr>
+                </thead>
+                  <tbody id="recentblocks">
+                   
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="container-fluid bg-6 text-center"> </div>
+<div class="col-md-1 row"></div> <p class="col-md-10 row">A wallet with your public and private keys has been automatically generated on the client-side of your device. Use the button below to download your wallet and store it in a secure location. If you lose your keys you will lose access to your tokens and NFTs.</p>
+<div class="container-fluid bg-7 text-center"> </div>
+
+    <!--</div>-->
+    <div class="col-md-12"> 
+    <div class="form-group row">
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary" onclick='save_keys()'>Export Wallet</button>
+        </div>
+    </div>
+<div class="container-fluid bg-6 text-center"> </div>
+<div class="col-md-1 row"></div> <p class="col-md-10 row">If you don't have any tokens, the blockchain authority will allow each account a single faucet request within the first 500 blocks that will grant 250 tokens. Once you have tokens, use the form below to transfer tokens to other parties, mint NFTs, and create smart contracts. Each transaction has a cost of 1 token. Using this product means you accept the terms of service. This product is for academic / research purposes only.</p>
+<div class="container-fluid bg-7 text-center"> </div>
+    <div class="form-group row">
+        <div class="col-md-12 text-center">
+            
+            <button type="button" class="btn btn-primary" onclick='faucet()'>Faucet Request</button>
+        </div>
+    </div>
+</div>
+
+
+  <div class="container-fluid bg-7 text-center"> </div>
+
+  <div class="col-md-12 row">
+        <!--<h2>Account Information</h2>-->
+
+        <div class="col-md-6">
+            <div class="info-head">ADDRESS</div><input class="form-control" id="origin" rows="1" readonly>
+        </div>
+        <div class="col-md-2">
+            <div class="info-head">TOKENS</div><input class="form-control" id="balance" rows="1" readonly>
+        </div>
+        <div class="col-md-2">
+            <div class="info-head">NFT COUNT</div><input class="form-control" id="nft_count" rows="1" readonly>
+        </div>
+    
+        
+  </div>
+    <div class="container-fluid bg-6 text-center"> </div>
+  <div class="col-md-12">   
+        <!--<h2>Transaction Detail</h2> 
+        <label for="type_val">Type:</label>-->
+     <div>
+        <div class="form-group row">
+            <div class="col-md-1">
+            <select name="type_val" id="type_val">
+              <option value="Transfer Tokens">Transfer Tokens</option>
+              <option value="Transfer NFT">Transfer NFT</option>
+              <option value="Mint NFT">Mint NFT</option>
+              <option value="Send Data">Send Data</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                DESTINATION<input class="form-control" name="destination" id="destination" rows="1" pattern="(0x)?[0-9A-Fa-f]{64}" oninput='requireValidHash("destination")'>
+            </div>
+            <div class="col-md-1">
+                TOKENS <input type="number" class="form-control" name="tokens" min="0" value="0" id="tokens">
+            </div>
+        
+            <div class="col-md-5">
+                EXTERNAL DATA HASH<input class="form-control" name="data" id="data" pattern="(0x)?[0-9A-Fa-f]{64}" oninput='requireValidHash("data")'>
+            </div>
+
+            <div class="col-md-1">
+                FEE<input class="form-control" name="fee" id="fee" value="1" readonly>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick='submit()'>Submit Transaction </button>
+
+         <div class="container-fluid bg-7 text-center"> </div>
+         <div class="form-group row">
+            <div class="col-md-10">
+                SUBMISSION RESULT<input class="form-control" id="submission-result" value="NOT SUBMITTED" readonly>
+                <!--<span id="contract-status"><span class="pending"> <span class="blue-dot"></span> PENDING</span></span>-->
+            </div>
+         </div>
+     </div>
+  </div>
+</div>
+
+<!--
+<div style="background-color:white;width:100%">
+  <div class="col-md-6" style="padding-top:80px;background-color:white;"></div>
+  <div class="col-md-6"  style="padding-left:0px;">
+    <div class="cornered-up"></div>
+  </div>
+</div>
+<div style="background-color:white;width:100%">
+    <div class="cornered-down"></div>
+</div>
+-->
+
+
+<div class="container-fluid bg-5 text-center"></div>
+<div class="container-fluid bg-6 text-center"> </div>
+
+<!-- Second Container (Grid) -->
+<div class="container-fluid bg-1 text-left">  
+  <div class="col-md-1"></div><div class="col-md-10 text-center"><a id="features"><h1> Features</h1></a></div>
+  <div class="col-md-1"></div>
+  <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header border-0">
+              <h4> Grantkey Ledger <span class="glyphicon glyphicon-transfer"></span></h4>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" style="padding-left:25px;">CONTRACT</th>
+                    <th scope="col">ORIGIN</th>
+                    <th scope="col">DESTINATION</th>
+                    <th scope="col">VALUE</th>
+                    <th scope="col">VALIDATION</th>
+                    <th scope="col">PROOF</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xe18a34ae</td>
+                      <td>0xfdc46280</td>
+                      <td>300.00</td>
+                      <td class="approved"><span class="green-dot"></span>Approved</td>
+                      <td><span class="glyphicon glyphicon-ok-circle"></span></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xd2c742939</td>
+                      <td>0x89cfe363f</td>
+                      <td>100.00</td>
+                      <td class="approved"><span class="green-dot"></span>Approved</td>
+                      <td><span class="glyphicon glyphicon-ok-circle"></span></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xc74293925</td>
+                      <td>0x61f38e18a</td>
+                      <td>250.00</td>
+                      <td class="rejected"><span class="red-dot"></span>Rejected</td>
+                      <td><span class="glyphicon glyphicon-remove-circle"></span></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xe18a34ae</td>
+                      <td>0xfdc46280</td>
+                      <td>150.00</td>
+                      <td class="approved"><span class="green-dot"></span>Approved</td>
+                      <td><span class="glyphicon glyphicon-ok-circle"></span></td>
+                    </tr>
+                   <tr>
+                      <td style="padding-left:35px;"><span class="glyphicon glyphicon-file"></span></td>
+                      <td>0xc74293925</td>
+                      <td>0x61f38e18a</td>
+                      <td>100.00</td>
+                      <td class="pending"><span class="blue-dot"></span>Pending</td>
+                      <td><span class="glyphicon glyphicon-time"></span></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+  </div>
+  <div class="col-md-5">
+    <h3><span class="glyphicon glyphicon-ok-circle"></span> Web-Based Client</h3><p> All transactions can be performed in the browser making interaction with the network fast, simple, and secure. The web client automatically generates a key pair on the client-side which is stored locally and can be used to interact with the blockchain. Store the private key in a secure location.</p>
+    <h3><span class="glyphicon glyphicon-ok-circle"></span> Smart-Contracts</h3><p>Smart-contracts can be used to transfer tokens based on the criteria specified in the contract. All transactions are automatically validated by and signed by the authority and contract validation is immediate.</p>
+    <h3><span class="glyphicon glyphicon-ok-circle"></span> Verified Immutable Transactions</h3><p>The authority publishes signed transactions to a blockchain allowing any user to audit the veracity of the network.</p>
+    <!--<h3><span class="glyphicon glyphicon-ok-circle"></span> Secure Assymentric Cryptography</h3><p>Based on public</p>-->
+    <h3><span class="glyphicon glyphicon-ok-circle"></span> Open Source</h3><p>A trusted open source code base that can be audited for vulnerabilities.</p>
+  </div>
+</div>
+
+<div class="container-fluid bg-5 text-center"></div>
+<div class="container-fluid bg-6 text-center"> </div>
+
+<!-- Second Container (Grid) -->
+<div class="container-fluid bg-1 text-left">  
+  <div class="col-md-1"></div><div class="col-md-10 text-center"><a id="about"><h1>About</h1></a></div>
+  <p class="col-md-12 row">
+<div class="col-md-1"></div><div class="col-md-10">Grantkey achieves instantaneous contract clearing while maintaining cryptographically secured immutability by moving from decentralized processing  / validation to authority-based processing with decentralized validation. The authority is prevented from cheating because it signs every block meaning that if it ever attempts to tamper with the blockchain anyone with a receipt of a block signed by the authority that is not present in the blockchain will be able to prove that authority tampered with the chain and a new authority can be selected. This project was created as part of my masters research at NYU for CS-GY 9963 Advanced Project in Computer Science. The intent is to provide a functional prototype of the architecture described in my research. It is my hope that others will build on this research and either fork this project or create their own implementations.</p></div>
+</div>
+
+<div style="background-color:white;width:100%">
+  <div class="col-md-6" style="padding-top:80px;background-color:white;"></div>
+  <div class="col-md-6"  style="padding-left:0px;">
+    <div class="cornered-up"></div>
+  </div>
+</div>
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-4 text-center">    
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <h3> 
+        <span class="glyphicon glyphicon-flash"></span>
+        Fast
+      </h3>
+      <p>By shifting from network-wide processing to network-wide validation, Grantkey processes transactions at lightning speed with no limits on scalability.</p>
+    </div>
+    <div class="col-sm-4"> 
+      <h3> 
+        <span class="glyphicon glyphicon-check"></span>
+        Verifiable
+      </h3>
+      <p>All transactions are cryptographically signed making it impossible to manipulate the ledger without being detected. Network-wide validation guarantees an immutable ledger detailing all transactions and balances.</p>
+        <!--
+        <img src="img/profile2.png" class="img-responsive img-circle" style="display:inline" alt="Example" width="30%">
+        <p> - bla bla bla</p>
+        -->
+    </div>
+    <div class="col-sm-3"> 
+      <h3> 
+        <span class="glyphicon glyphicon-lock"></span>
+        Secure
+      </h3>
+      <p>Each transaction is automatically validated by the network upholding digital contracts and preventing double spend attacks.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>Copyright &copy; 2021 <a href="https://grantkey.com" style="color:white;">grantkey.com</a></p> 
+</footer>
+
+</body>
+</html>

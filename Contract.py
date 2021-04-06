@@ -17,17 +17,17 @@ class Contract:
         execution_time (string) <- ISO timestamp at which the contract should be executed
         fee (integer) <- tokens to transfer back to network in exchange for contract processing
     """
-    def __init__(self,counterparty_address=PARTY_ADDRESS, tokens=0, contract_type="Token Transfer", data="True", execution_time=None,fee=1):
+    def __init__(self,counterparty_address=PARTY_ADDRESS, tokens=0, contract_type="Token Transfer", data="", execution_time=None,fee=1):
 
         p = Persona()
         self.id = str(uuid.uuid4())
         self.creation_timestamp = get_ts() #utc_ts()
         self.authority_address = AUTHORITY_ADDRESS
+        self.server = HOST
         self.party_key_str = PARTY_KEY_STR
         self.party_address = p.get_key_address(PARTY_KEY_STR)
         self.counterparty_address = counterparty_address
         self.type = contract_type
-        #self.terms = terms
         self.data = data
         self.tokens = tokens
         self.execution_time = execution_time
@@ -37,11 +37,11 @@ class Contract:
 
         self.payload_fields = [
             'authority',
+            'server',
             'created',
             'type',
             'origin',
             'destination',
-            #'terms',
             'data',
             'tokens',
             'effective',
@@ -51,6 +51,7 @@ class Contract:
         self.payload_data = [
             #self.party_key_str,
             self.authority_address,
+            self.server,
             self.creation_timestamp, 
             self.type,           
             self.party_address,

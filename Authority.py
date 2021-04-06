@@ -25,9 +25,12 @@ def index():
 
 @app.route('/add',methods=['POST'],strict_slashes=False)
 def add():
-    is_valid = blockchain.add(extract_signed_json(request.json))
-    msg = str(blockchain.blockchain[-1]) if is_valid else '{"status":"invalid"}'
-    return msg
+    try:
+        is_valid = blockchain.add(extract_signed_json(request.json))
+        msg = str(blockchain.blockchain[-1]) if is_valid else '{"status":"invalid"}'
+        return msg
+    except:
+        return '{"status":"error"}'
 
 @app.route('/key/<string:address>',strict_slashes=False)
 def key(address):
@@ -52,16 +55,24 @@ def view(block_number):
 
 @app.route('/recent',strict_slashes=False)
 def recent():
-    if len(blockchain.blockchain) > 10:
-        return str(blockchain.blockchain[-10:][::-1]).replace("'","")
-    return str(blockchain.blockchain).replace("'","")
+    chain = blockchain.blockchain
+    if len(chain) > 5:
+        chain = blockchain.blockchain[-5:]
+    return str([str(b) for b in chain[::-1]]).replace("'","")
         
+
+@app.route('/fullchain',strict_slashes=False)
+def fullchain():
+    return str([str(b) for b in blockchain.blockchain[::-1]]).replace("'","")
 
 @app.route('/faucet',methods=['POST'],strict_slashes=False)
 def faucet():
-    if (blockchain.faucet(request.json)):
-        return "TOKENS GRANTED"
-    return "REQUEST FAILED"
+    try:
+        if (blockchain.faucet(request.json)):
+            return '{"status":"TOKENS GRANTED"}'
+        return '{"status":"REQUEST FAILED"}'
+    except:
+        return '{"status":"error"}'
 
 """
 @app.route('/echo',methods=['POST'],strict_slashes=False)

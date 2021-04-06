@@ -39,10 +39,10 @@ class Blockchain:
             self.blockchain = pickle.load(open(blockchain_storage,'rb'))
             self.block_number = len(self.blockchain)
         else:
-            c = Contract(AUTHORITY_ADDRESS,GENESIS_TOKENS,"GENESIS BLOCK",fee=0)
+            c = Contract(AUTHORITY_ADDRESS.lower(),GENESIS_TOKENS,"Genesis Block",fee=0)
             self.add(c.get_signed_json())
 
-            c2 = Contract('0DD7F8D140EBD5D3B2C9BC7E836D8E65393C6D808155066A9CF78AA2A029D97E',99999999,"Transfer Tokens",data="",fee=0)
+            c2 = Contract('0DD7F8D140EBD5D3B2C9BC7E836D8E65393C6D808155066A9CF78AA2A029D97E'.lower(),9999999,"Transfer Tokens",data="",fee=0)
             self.add(c2.get_signed_json())
             """
             c2 = Contract(AUTHORITY_ADDRESS,0,"Mint NFT",data="NFT is being minted as the hash of this contract",fee=0)
@@ -53,24 +53,29 @@ class Blockchain:
             self.add(c4.get_signed_json())
             """
 
-    def faucet(self,faucet_request_json):
+    def faucet(self,payload):
+        #print(faucet_request_json)
         if self.block_number > FAUCET_LIMIT:
             return False
-        payload = json.loads(faucet_request_json)
+        #payload = json.loads(faucet_request_json)
         #print(payload)
-        authority_address = payload['Authority']
+        authority_address = payload['authority']
+        #print(authority_address)
         if AUTHORITY_ADDRESS != authority_address:
+            return False
+
+        server = payload['server']
+        if HOST != server:
             return False
         #party_key_str = rebend(payload['Public Key'])
 
         #party_address =  self.persona.get_key_address(party_key_str)       
-        if payload['Destination'] in self.party_balances:
+        if payload['destination'] in self.party_balances:
             print("account exists")
             return False
 
-        c = Contract(payload['Destination'],FAUCET_TOKENS,"Faucet Transfer")
+        c = Contract(payload['destination'],FAUCET_TOKENS,"Faucet Transfer",fee=0)
         return self.add(c.get_signed_json())
-
 
             
     def store(self):
@@ -91,18 +96,25 @@ class Blockchain:
             pickle.dump(self.address_keys,bf)
 
     def get_address_key(self,address):
+        address = address.lower()
         return self.address_keys[address]
 
     def get_address_balance(self,address):
+        address = address.lower()
         tokens = 0 if address not in self.party_balances else self.party_balances[address]
         nft_count = 0 if address not in self.nfts else len(self.nfts[address])
-        return '{"tokens":' + str(tokens) + ',"nft_count":' + str(nft_count) + '}'
+        nft_list = '[]' if nft_count == 0 else str(list(self.nfts[address])).replace("'",'"')
+        return '{"tokens":' + str(tokens) + ',"nft_count":' + str(nft_count) + ',"nft_list":' + nft_list + '}'
 
     def add(self,contract_json):
         contract = json.loads(contract_json)
         payload = contract['payload']
-        authority_address = payload['authority']
+        authority_address = payload['authority'].lower()
+        server = payload['server'].lower()
+
         if AUTHORITY_ADDRESS != authority_address:
+            return False
+        if HOST != server:
             return False
         party_key_str = rebend(contract['key'])
         origin = payload['origin'].lower()
@@ -163,4 +175,3 @@ class Blockchain:
 if __name__ == '__main__':
     k = Blockchain()
     print(k)
-    
