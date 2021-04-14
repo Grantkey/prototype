@@ -22,6 +22,7 @@ class Blockchain:
         self.address_keys_storage = address_keys_storage
         self.blockchain_storage = blockchain_storage
         self.nft_storage = nft_storage
+        self.latest_block_ts = get_ts()
         
         if path.exists(party_balances_storage):
             self.party_balances = pickle.load(open(party_balances_storage,'rb'))
@@ -95,6 +96,8 @@ class Blockchain:
         with open(self.address_keys_storage,'wb') as bf:
             pickle.dump(self.address_keys,bf)
 
+        self.latest_block_ts = get_ts()
+
     def get_address_key(self,address):
         address = address.lower()
         return self.address_keys[address]
@@ -141,10 +144,10 @@ class Blockchain:
         print(AUTHORITY_ADDRESS)
         """
         party_nfts = set() if origin not in self.nfts else self.nfts[origin]
-        block = Block(contract_json,self.previous_signature,self.party_balances[origin],party_nfts,self.block_number)
+        block = Block(contract_json,self.previous_signature,self.party_balances[origin],party_nfts,self.block_number,self.latest_block_ts)
         #print("return block")
         is_valid = block.validation_result
-        #print(is_valid)
+
         if is_valid:
             self.previous_signature = block.authority_signature
             self.blockchain.append(block)

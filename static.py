@@ -1,9 +1,12 @@
 from Persona import Persona
 p = Persona()
-from datetime import timezone,datetime
+from datetime import timezone,datetime,timedelta
+import json
 
 utc_ts = datetime.now().replace(tzinfo = timezone.utc).timestamp
-get_ts = lambda: str(datetime.now(timezone.utc))
+get_ts = lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+#get_ts = lambda: json.dumps(datetime.now(timezone.utc).isoformat())
+lim_ts = lambda: (datetime.now(timezone.utc) - timedelta(seconds=2)).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
 MB = 10485760
 HOST = "grantkey.com"
@@ -45,3 +48,4 @@ def get_contract_json_str(payload):
 
 def extract_signed_json(d):
         return '{"address":"' + d['address'] + '","payload":' + get_contract_json_str(d['payload']) + ',"key":"' + unbend(d['key']) + '","signature":"' + d['signature'] + '"}'
+

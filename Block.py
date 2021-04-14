@@ -5,7 +5,7 @@ import json
 import re
 
 class Block:
-    def __init__(self, contract_json, prior_signature,party_balance,party_nfts,block_number):
+    def __init__(self, contract_json, prior_signature,party_balance,party_nfts,block_number,latest_block_ts):
         self.persona = Persona()
         self.contract_json = contract_json
         #contract_str_tmp = contract_json.replace('{"Payload":','')
@@ -20,6 +20,7 @@ class Block:
         self.fee = int(self.payload["fee"])
         self.party_key_str = rebend(self.contract["key"])
         #self.counterparty_key_str = rebend(self.payload["Counterparty Key"])
+        self.latest_block_ts = latest_block_ts
         self.prior_signature = prior_signature
         self.party_balance = party_balance
         self.party_nfts = party_nfts
@@ -93,6 +94,12 @@ class Block:
         if self.payload["tokens"] != str(self.tokens):
             print("invalid token value")
             return False
+        if self.payload["created"] > get_ts():
+            return False
+        if self.payload["created"] < lim_ts():
+            return False
+        if self.payload["created"] <= self.latest_block_ts:
+            return False
         #print("validate1")
         if self.fee < 1 and self.payload["origin"] != AUTHORITY_ADDRESS:
             print("invalid fee value")
@@ -107,8 +114,15 @@ class Block:
             return False
         #print("validate4")
         if self.payload["type"] == "Transfer NFT":
+            if self.payload["data"] == "":
+                print("Invalid NFT")
+                return False
             if self.payload["data"] not in self.party_nfts:
                 print("NFT does not belong to party")
+                return False
+        if self.payload["type"] == "Mint NFT":
+            if self.payload["data"] == "":
+                print("Invalid NFT data")
                 return False
 
         #print("validate5")
@@ -140,6 +154,6 @@ if __name__ == '__main__':
     print(b)
     """
     d = Contract(contract_type="Transfer NFT",data="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    x = Block(d.get_signed_json(),'fake_sig',10,{'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','bbb'},1)
+    x = Block(d.get_signed_json(),'fake_sig',10,{'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','bbb'},1,lim_ts())
     print(x)
 
